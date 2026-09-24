@@ -1,0 +1,131 @@
+// C++ & OOP course Day 2
+// ============================================
+// Day 2: Operators
+// ============================================
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    // ==========================================
+    // 1. UNARY OPERATORS
+    // ==========================================
+    cout << "========== 1. Unary Operators ==========\n";
+
+    int x = 6;
+    int y = -x;                    // -6
+    cout << "-x = " << y << endl;
+
+    bool male = true;
+    bool female = !male;           // false
+    cout << "!male = " << female << endl;
+
+    cout << "!0 = " << (!0) << endl;   // 1
+    cout << "!1 = " << (!1) << endl;   // 0
+
+
+    // ==========================================
+    // 2. PREFIX vs POSTFIX
+    // ==========================================
+    cout << "\n========== 2. Prefix vs Postfix ==========\n";
+
+    int a = 10, b;
+
+    // Prefix Increment
+    b = ++a;                       // a = 11, b = 11
+    cout << "Prefix: a = " << a << ", b = " << b << endl;
+
+    // Postfix Increment
+    a = 10;
+    b = a++;                       // b = 10, a = 11
+    cout << "Postfix: a = " << a << ", b = " << b << endl;
+
+    // Prefix Decrement
+    a = 10;
+    b = --a;                       // a = 9, b = 9
+    cout << "Prefix Dec: a = " << a << ", b = " << b << endl;
+
+    // Postfix Decrement
+    a = 10;
+    b = a--;                       // b = 10, a = 9
+    cout << "Postfix Dec: a = " << a << ", b = " << b << endl;
+
+    // WARNING: undefined behavior
+    // a = 10;
+    // cout << a++ + ++a << endl;  // ❌ undefined
+
+    // Best practice
+    a = 10;
+    ++a;                           // ✅ لوحده
+    int temp = a++;                // ✅ لو محتاج القيمة القديمة
+    cout << "Best practice: a = " << a << ", temp = " << temp << endl;
+
+
+    // ==========================================
+    // 3. ASSIGNMENT OPERATOR
+    // ==========================================
+    cout << "\n========== 3. Assignment Operator ==========\n";
+
+    int num = 5;
+
+    num = num + 1;                 // 6
+    cout << "num = num + 1 → " << num << endl;
+
+    num += 1;                      // 7
+    cout << "num += 1 → " << num << endl;
+
+    num *= 2;                      // 14
+    cout << "num *= 2 → " << num << endl;
+
+    num -= 10;                     // 4
+    cout << "num -= 10 → " << num << endl;
+
+    num /= 2;                      // 2
+    cout << "num /= 2 → " << num << endl;
+
+    // Comma Operator
+    int p, q, r;
+    int result = (10, p = 1, q = 3 + 1, r = p + 2 * q + 1, 40);
+    cout << "Comma operator result = " << result << endl;  // 40
+
+
+    // ==========================================
+    // 4. PRECEDENCE
+    // ==========================================
+    cout << "\n========== 4. Precedence ==========\n";
+
+    int m = 2 + 3 * 4 - 6 / 2;     // 2 + 12 - 3 = 11
+    cout << "2 + 3 * 4 - 6 / 2 = " << m << endl;
+
+    int n = 2 + 3 * (4 - 6 / 2);   // 2 + 3 * 1 = 5
+    cout << "2 + 3 * (4 - 6 / 2) = " << n << endl;
+
+
+    // ==========================================
+    // 5. ASSOCIATIVITY
+    // ==========================================
+    cout << "\n========== 5. Associativity ==========\n";
+
+    int assoc = 10 - 6 + 3;        // (10 - 6) + 3 = 7 (left-to-right)
+    cout << "10 - 6 + 3 = " << assoc << endl;
+
+    int x1 = 10, y1 = 20, z1 = 3;
+    x1 += y1 += z1 *= 9 - 3 - 1;
+    cout << "x1 = " << x1 << ", y1 = " << y1 << ", z1 = " << z1 << endl;
+    // z1 = 10, y1 = 30, x1 = 40
+
+
+    // ==========================================
+    // 6. ORDER OF EVALUATION (WARNING)
+    // ==========================================
+    cout << "\n========== 6. Order of Evaluation ==========\n";
+
+    cout << "Don't use a variable more than once with ++ or --\n";
+    cout << "Example: a++ + ++a → undefined behavior\n";
+
+    // int bad = 10;
+    // cout << bad++ + ++bad << endl;  // ❌ undefined
+
+    return 0;
+}
