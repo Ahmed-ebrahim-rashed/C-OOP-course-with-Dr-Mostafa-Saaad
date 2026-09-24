@@ -1,0 +1,192 @@
+// C++ & OOP course Day 1
+// ============================================
+// Day 1: Printing, Errors, Data Types, Variables
+// ============================================
+
+#include <iostream>
+#include <string>       // for string
+#include <climits>      // for INT_MAX and INT_MIN
+
+using namespace std;
+
+int main()
+{
+    // ==========================================
+    // 1. PRINTING
+    // ==========================================
+    cout << "========== 1. Printing ==========\n";
+
+    cout << "I am Mostafa";          // no new line
+    cout << endl;                    // new line
+    cout << "I was born in Giza\n";  // \n = new line
+    cout << "I graduated from Cairo university" << endl;
+
+    // Print multiple things on one line
+    cout << "Age: " << 55 << ", Weight: " << 92.5 << endl;
+
+    // Print numbers and arithmetic operations
+    cout << "10 * 10 = " << 10 * 10 << endl;
+
+
+    // ==========================================
+    // 2. DATA TYPES
+    // ==========================================
+    cout << "\n========== 2. Data Types ==========\n";
+
+    int age = 55;                  // integer
+    double weight = 92.5;          // double
+    char group = 'D';              // character
+    string name = "Mostafa";       // string
+    bool is_male = true;           // boolean
+
+    cout << "Age: " << age << endl;
+    cout << "Weight: " << weight << endl;
+    cout << "Group: " << group << endl;
+    cout << "Name: " << name << endl;
+    cout << "Is Male: " << is_male << endl;   // true = 1
+
+
+    // ==========================================
+    // 3. VARIABLES
+    // ==========================================
+    cout << "\n========== 3. Variables ==========\n";
+
+    // Method 1: declare + assign
+    int number1 = 30;
+    int number2 = 10;
+
+    // Method 2: declare only (garbage value)
+    int number3;
+    number3 = 50;                  // assign later
+
+    cout << "number1 = " << number1 << endl;
+    cout << "number2 = " << number2 << endl;
+    cout << "number3 = " << number3 << endl;
+
+    // Arithmetic operations
+    cout << "number1 + number2 = " << number1 + number2 << endl;
+    cout << "number1 - number2 = " << number1 - number2 << endl;
+    cout << "2 * number1 + 1 = " << 2 * number1 + 1 << endl;
+
+    // Reassign
+    number1 = 50;
+    cout << "After reassign, number1 = " << number1 << endl;
+
+
+    // ==========================================
+    // 4. IDENTIFIER RULES
+    // ==========================================
+    cout << "\n========== 4. Identifier Rules ==========\n";
+
+    int iNumber = 10;              // OK: letters and digits
+    int status1 = 20;              // OK
+    int mostafa_saad = 30;         // OK: underscore
+    int _valid = 40;               // OK: starts with _
+    // int 7Core = 50;             // ERROR: cannot start with digit
+    // int return = 60;            // ERROR: reserved keyword
+
+    int sum = 100;
+    int SUM = 200;                 // OK: different from sum (case sensitive)
+
+    cout << "iNumber = " << iNumber << endl;
+    cout << "status1 = " << status1 << endl;
+    cout << "mostafa_saad = " << mostafa_saad << endl;
+    cout << "_valid = " << _valid << endl;
+    cout << "sum = " << sum << ", SUM = " << SUM << " (different)" << endl;
+
+
+    // ==========================================
+    // 5. DATA TYPE PRECISION
+    // ==========================================
+    cout << "\n========== 5. Data Type Precision ==========\n";
+
+    int a = 10, b = 21;
+
+    int i1 = a + b / 2;            // 10 + 10 = 20 (wrong)
+    int i2 = (a + b) / 2;          // 31 / 2 = 15 (correct as int but not precise)
+    double x = 10.0, y = 21;
+    double d1 = x + y / 2.0;       // 10 + 10.5 = 20.5 (wrong)
+    double d2 = (x + y) / 2.0;     // 31 / 2.0 = 15.5 (correct)
+
+    cout << "i1 = " << i1 << " (wrong - integer division)" << endl;
+    cout << "i2 = " << i2 << " (correct as int but not precise)" << endl;
+    cout << "d1 = " << d1 << " (wrong - precedence)" << endl;
+    cout << "d2 = " << d2 << " (correct - double division)" << endl;
+
+
+    // ==========================================
+    // 6. OVERFLOW & UNDERFLOW
+    // ==========================================
+    cout << "\n========== 6. Overflow & Underflow ==========\n";
+
+    cout << "INT_MAX = " << INT_MAX << endl;   // 2147483647
+    cout << "INT_MIN = " << INT_MIN << endl;   // -2147483648
+
+    // int val = INT_MAX + 1;   // WARNING: overflow
+    // cout << val << endl;     // wrong value
+
+
+    // ==========================================
+    // 7. READING VARIABLES
+    // ==========================================
+    cout << "\n========== 7. Reading Variables ==========\n";
+
+    int luckyNum;
+    cout << "Enter your lucky number: ";
+    cin >> luckyNum;
+    cout << "Your lucky number * 2 + 1 = " << 2 * luckyNum + 1 << endl;
+
+    // Read multiple values
+    int num1, num2;
+    cout << "Enter 2 numbers: ";
+    cin >> num1 >> num2;
+    cout << "Multiplication = " << num1 * num2 << endl;
+    cout << "Addition = " << num1 + num2 << endl;
+
+
+    // ==========================================
+    // 8. CONSTANT VARIABLES
+    // ==========================================
+    cout << "\n========== 8. Constant Variables ==========\n";
+
+    const double PI = 3.14159;
+    // PI = 10;   // ERROR: cannot change const
+
+    const int LUCKY{ 13 };
+    // const int x;   // ERROR: must assign value
+
+    const char charVal = 'A';
+    const string str = "Welcome to our BANK";
+
+    cout << "PI = " << PI << endl;
+    cout << "LUCKY = " << LUCKY << endl;
+    cout << "charVal = " << charVal << endl;
+    cout << "str = " << str << endl;
+
+
+    // ==========================================
+    // 9. ERRORS
+    // ==========================================
+    cout << "\n========== 9. Errors ==========\n";
+
+    // Compile Error Examples (will not run if uncommented):
+    // cout << "I am Mostafa"        // ERROR: missing ;
+    // Main() { }                    // ERROR: Main instead of main
+    // cout << "Hello";              // ERROR: outside main
+    // #include<iostream> missing    // ERROR: missing include
+
+    // Runtime Error Example:
+    // cout << 10 / 0;               // ERROR: divide by zero (crash)
+
+    cout << "Compile Errors: syntax rules violation" << endl;
+    cout << "Runtime Errors: crashes during running" << endl;
+    cout << "Example: divide by zero" << endl;
+
+
+    // ==========================================
+    // END
+    // ==========================================
+    cout << "\n========== END OF DAY 1 ==========\n";
+
+    return 0;
+}
