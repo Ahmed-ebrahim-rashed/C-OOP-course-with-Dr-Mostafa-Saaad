@@ -1,0 +1,219 @@
+// ============================================
+// Day 4: Selection (if / else / else if)
+// ============================================
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    // ==========================================
+    // 1. IF STATEMENT
+    // ==========================================
+    cout << "========== 1. if Statement ==========\n";
+
+    int salary;
+    cout << "Enter salary: ";
+    cin >> salary;
+
+    if (salary < 1000)
+        cout << "you are poor\n";
+
+    cout << "Salam\n";   // runs in all cases
+
+
+    // ==========================================
+    // 2. IF WITH BLOCK { }
+    // ==========================================
+    cout << "\n========== 2. if with Block ==========\n";
+
+    int num;
+    cout << "Enter num: ";
+    cin >> num;
+
+    if (num == 10)
+    {
+        int x = 3;
+        cout << "10 is lucky number\n";
+        cout << "also " << 2 * num + x << "\n";
+    }
+    // cout << x;  // ERROR: x is not visible here
+
+
+    // ==========================================
+    // 3. IF-ELSE CHAIN
+    // ==========================================
+    cout << "\n========== 3. if-else Chain ==========\n";
+
+    cout << "Enter salary again: ";
+    cin >> salary;
+
+    if (salary < 1000)
+        cout << "you are poor\n";
+    else if (salary >= 1000 && salary < 20000)
+        cout << "good salary\n";
+    else
+        cout << "you are rich\n";
+
+    // Number of digits
+    int n;
+    cout << "Enter num: ";
+    cin >> n;
+
+    if (n < 10)
+        cout << "1 digit\n";
+    else if (n < 100)
+        cout << "2 digits\n";
+    else if (n < 1000)
+        cout << "3 digits\n";
+    else if (n < 10000)
+        cout << "4 digits\n";
+    else
+        cout << "5 or more digits\n";
+
+
+    // ==========================================
+    // 4. NESTED IF
+    // ==========================================
+    cout << "\n========== 4. Nested if ==========\n";
+
+    cout << "Enter salary: ";
+    cin >> salary;
+
+    if (salary < 1000)
+    {
+        int age;
+        cout << "Enter age: ";
+        cin >> age;
+
+        if (age < 22)
+            cout << "You are still young.\n";
+    }
+    else
+        cout << "You are rich\n";
+
+
+    // ==========================================
+    // 5. SIMPLE CALCULATOR
+    // ==========================================
+    cout << "\n========== 5. Simple Calculator ==========\n";
+
+    double num1, num2;
+    char operation;
+    cout << "Enter: num1 op num2 (e.g., 7 + 55): ";
+    cin >> num1 >> operation >> num2;
+
+    if (operation == '+')
+        cout << num1 + num2 << "\n";
+    else if (operation == '-')
+        cout << num1 - num2 << "\n";
+    else if (operation == '*')
+        cout << num1 * num2 << "\n";
+    else
+        cout << num1 / num2 << "\n";
+
+
+    // ==========================================
+    // 6. MIN OF 2 NUMBERS
+    // ==========================================
+    cout << "\n========== 6. Min of 2 ==========\n";
+
+    int a, b;
+    cout << "Enter 2 numbers: ";
+    cin >> a >> b;
+
+    if (a < b)
+        cout << "Min = " << a << "\n";
+    else
+        cout << "Min = " << b << "\n";
+
+
+    // ==========================================
+    // 7. MIN OF 3 NUMBERS (3 Ways)
+    // ==========================================
+    cout << "\n========== 7. Min of 3 ==========\n";
+
+    int x1, x2, x3;
+    cout << "Enter 3 numbers: ";
+    cin >> x1 >> x2 >> x3;
+
+    // Way 1: Nested if
+    cout << "Way 1: ";
+    if (x1 < x2) {
+        if (x1 < x3) cout << x1 << "\n";
+        else cout << x3 << "\n";
+    }
+    else {
+        if (x2 < x3) cout << x2 << "\n";
+        else cout << x3 << "\n";
+    }
+
+    // Way 2: && and ||
+    cout << "Way 2: ";
+    if (x1 <= x2 && x1 <= x3)
+        cout << x1 << "\n";
+    else if (x2 <= x1 && x2 <= x3)
+        cout << x2 << "\n";
+    else
+        cout << x3 << "\n";
+
+    // Way 3: answer variable
+    cout << "Way 3: ";
+    int answer = x1;
+    if (answer > x2) answer = x2;
+    if (answer > x3) answer = x3;
+    cout << answer << "\n";
+
+
+    // ==========================================
+    // 8. IF WITH INITIALIZER (C++17)
+    // ==========================================
+    cout << "\n========== 8. If with Initializer ==========\n";
+
+    int val = 11;
+
+    if (int y = 10; y % 2 == 1)
+        cout << y << " is odd\n";
+    else if (y % 2 == 0)
+        cout << y << " is even\n";
+    // cout << y;  // ERROR: y is not visible here
+
+
+    // ==========================================
+    // 9. LAST 3 DIGITS EXAMPLE
+    // ==========================================
+    cout << "\n========== 9. Last 3 Digits ==========\n";
+
+    int lastNum;
+    cout << "Enter a number: ";
+    cin >> lastNum;
+
+    if (lastNum < 10000)
+        cout << "this is a small number\n";
+    else
+    {
+        int digit1 = lastNum % 10;
+        lastNum = lastNum / 10;
+        int digit2 = lastNum % 10;
+        lastNum = lastNum / 10;
+        int digit3 = lastNum % 10;
+
+        int sum = digit1 + digit2 + digit3;
+
+        if ((sum % 2) != 0)   // odd
+            cout << "this is a great number\n";
+        else
+        {
+            bool is_digit1_odd = (digit1 % 2 == 1);
+            bool is_digit2_odd = (digit2 % 2 == 1);
+            bool is_digit3_odd = (digit3 % 2 == 1);
+
+            if (is_digit1_odd || is_digit2_odd || is_digit3_odd)
+                cout << "this is a good number\n";
+            else
+                cout << "this is a bad number\n";
+        }
+    }
+
+    return 0;
+}
