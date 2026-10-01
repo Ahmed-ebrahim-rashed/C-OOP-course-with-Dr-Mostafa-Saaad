@@ -1,0 +1,156 @@
+// ============================================
+// Day 3: Relational, Logical, Division, Modulus
+// ============================================
+
+#include <iostream>
+#include <string>
+#include <cmath>      // for abs()
+using namespace std;
+
+int main()
+{
+    // ==========================================
+    // 1. RELATIONAL OPERATORS
+    // ==========================================
+    cout << "========== 1. Relational Operators ==========\n";
+
+    cout << "(3 > 5)  = " << (3 > 5) << endl;    // 0
+    cout << "(3 < 5)  = " << (3 < 5) << endl;    // 1
+    cout << "(3 == 5) = " << (3 == 5) << endl;   // 0
+    cout << "(3 >= 3) = " << (3 >= 3) << endl;   // 1
+    cout << "(3 != 4) = " << (3 != 4) << endl;   // 1
+    cout << "(3 != 3) = " << (3 != 3) << endl;   // 0
+
+
+    // ==========================================
+    // 2. COMPARING STRINGS
+    // ==========================================
+    cout << "\n========== 2. Comparing Strings ==========\n";
+
+    string name1 = "ali", name2 = "ali mostafa";
+    string name3 = "ziad", name5 = "ALI";
+
+    cout << "(ali < ali mostafa) = " << (name1 < name2) << endl;  // 1
+    cout << "(ali > ziad) = " << (name1 > name3) << endl;        // 0
+    cout << "(ali == ALI) = " << (name1 == name5) << endl;       // 0
+    cout << "(ali > ALI) = " << (name1 > name5) << endl;         // 1
+
+
+    // ==========================================
+    // 3. DOUBLE COMPARISONS (WARNING)
+    // ==========================================
+    cout << "\n========== 3. Double Comparisons ==========\n";
+
+    double a = 3.0 / 7.0;
+    double b = 1 + 3.0 / 7.0 - 1;
+    cout << "a = " << a << ", b = " << b << endl;
+    cout << "(a == b) = " << (a == b) << endl;   // ممكن 0!
+
+    // الطريقة الصح
+    cout << "(abs(a - b) < 0.0001) = " << (abs(a - b) < 0.0001) << endl;
+
+
+    // ==========================================
+    // 4. TRUTH TABLE (AND / OR / NOT)
+    // ==========================================
+    cout << "\n========== 4. Truth Table ==========\n";
+
+    cout << "T && T = " << (1 && 1) << endl;   // 1
+    cout << "T && F = " << (1 && 0) << endl;   // 0
+    cout << "F && T = " << (0 && 1) << endl;   // 0
+    cout << "F && F = " << (0 && 0) << endl;   // 0
+
+    cout << "T || T = " << (1 || 1) << endl;   // 1
+    cout << "T || F = " << (1 || 0) << endl;   // 1
+    cout << "F || T = " << (0 || 1) << endl;   // 1
+    cout << "F || F = " << (0 || 0) << endl;   // 0
+
+    cout << "!T = " << (!1) << endl;           // 0
+    cout << "!F = " << (!0) << endl;           // 1
+
+
+    // ==========================================
+    // 5. LOGICAL OPERATORS IN C++
+    // ==========================================
+    cout << "\n========== 5. Logical Operators ==========\n";
+
+    int age = 30, salary = 7000, weight = 110;
+
+    cout << "age > 25 && salary < 8000 = " << ((age > 25) && (salary < 8000)) << endl;  // 1
+    cout << "age > 25 && salary > 9000 = " << ((age > 25) && (salary > 9000)) << endl;  // 0
+    cout << "age > 35 || salary < 8500 = " << ((age > 35) || (salary < 8500)) << endl;  // 1
+    cout << "age > 35 || salary > 9000 = " << ((age > 35) || (salary > 9000)) << endl;  // 0
+
+    // Precedence: && before ||
+    cout << "age > 35 && salary > 6000 || weight > 200 = "
+        << ((age > 35) && (salary > 6000) || (weight > 200)) << endl;  // 0
+
+
+    // ==========================================
+    // 6. SHORT-CIRCUIT EVALUATION
+    // ==========================================
+    cout << "\n========== 6. Short-Circuit ==========\n";
+
+    int x = 10;
+
+    // || : لو أول شرط true → بيوقف
+    x < 100 || (x += 50 > 10);
+    cout << "After x < 100 || (x += 50 > 10): x = " << x << endl;  // 10
+
+    // && : لو أول شرط false → بيوقف
+    x == 20 && (++x > 50);
+    cout << "After x == 20 && (++x > 50): x = " << x << endl;      // 10
+
+
+    // ==========================================
+    // 7. DIVISION OPERATOR
+    // ==========================================
+    cout << "\n========== 7. Division Operator ==========\n";
+
+    cout << "25 / 5 = " << 25 / 5 << endl;      // 5
+    cout << "26 / 5 = " << 26 / 5 << endl;      // 5 (مش 5.2)
+    cout << "27 / 5 = " << 27 / 5 << endl;      // 5
+    cout << "30 / 5 = " << 30 / 5 << endl;      // 6
+    cout << "26 / 5.0 = " << 26 / 5.0 << endl;  // 5.2
+    cout << "27.0 / 5.0 = " << 27.0 / 5.0 << endl; // 5.4
+
+    int num = 12345;
+    cout << "num / 10 = " << num / 10 << endl;      // 1234
+    cout << "num / 100 = " << num / 100 << endl;    // 123
+    cout << "num / 1000 = " << num / 1000 << endl;  // 12
+
+    // Casting
+    double d = 8 / 3.0;
+    int res = (int)d;
+    cout << "8 / 3.0 = " << d << endl;              // 2.666...
+    cout << "(int)d = " << res << endl;             // 2
+
+    cout << "(int)'a' = " << (int)'a' << endl;      // 97
+    cout << "(int)'A' = " << (int)'A' << endl;      // 65
+
+
+    // ==========================================
+    // 8. MODULUS OPERATOR
+    // ==========================================
+    cout << "\n========== 8. Modulus Operator ==========\n";
+
+    cout << "25 % 5 = " << 25 % 5 << endl;   // 0
+    cout << "26 % 5 = " << 26 % 5 << endl;   // 1
+    cout << "27 % 5 = " << 27 % 5 << endl;   // 2
+    cout << "28 % 5 = " << 28 % 5 << endl;   // 3
+    cout << "29 % 5 = " << 29 % 5 << endl;   // 4
+    cout << "30 % 5 = " << 30 % 5 << endl;   // 0
+
+    int n = 1234;
+    cout << "n % 10 = " << n % 10 << endl;     
+    cout << "n % 100 = " << n % 100 << endl;   
+    cout << "n % 1000 = " << n % 1000 << endl; 
+    cout << "n / 10 = " << n / 10 << endl;     
+    cout << "n / 100 = " << n / 100 << endl;   
+
+    // Even or Odd
+    cout << "100 % 2 = " << 100 % 2 << " (even)" << endl;  // 0
+    cout << "101 % 2 = " << 101 % 2 << " (odd)" << endl;   // 1
+
+    return 0;
+}
